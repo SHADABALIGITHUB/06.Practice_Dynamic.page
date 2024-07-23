@@ -49,6 +49,26 @@ const data = {
     ]
 };
 
+// theme
+
+const btnTheme=document.querySelector('.Theme');
+
+
+document.querySelector('.Theme').addEventListener('click', function() {
+    document.body.classList.toggle('dark-theme');
+
+    const btntext = document.querySelector('.btn-text-theme').innerText;
+     console.log(btntext);
+    if (btntext === 'Dark') {
+        document.querySelector('.btn-text-theme').innerText = 'Light';
+    } else {
+        document.querySelector('.btn-text-theme').innerText = 'Dark';
+    }
+    
+});
+
+ 
+
 const container = document.getElementById('tasks-container');
 
 data.tasks.forEach(task => {
@@ -105,6 +125,16 @@ data.tasks.forEach(task => {
             threadClone.style.display = 'block'; // Make it visible
             assetElement.appendChild(threadClone);
         }
+        if(asset.asset_content_type==='article'){
+             const Elementunderwork=document.createElement('div');
+             Elementunderwork.innerText="Work in progress";
+             Elementunderwork.style.width="100%";
+             Elementunderwork.style.textAlign='centre';
+             Elementunderwork.style.color="blue";
+             assetElement.appendChild(Elementunderwork);
+
+
+        }
 
         if (asset.asset_content_type === 'video' && asset.asset_content.trim()) {
             const videoElement = document.createElement('iframe');
@@ -130,4 +160,23 @@ data.tasks.forEach(task => {
     taskElement.appendChild(assetContainerMain);
 
     container.appendChild(taskElement);
+});
+
+
+
+//  close and open the thread
+
+const ThreadDivCloseandOpen = document.querySelector('.thread-close-open');
+const threadArrow = document.querySelector('.arrow-collapse');
+
+
+
+threadArrow.addEventListener('click', () => {
+    if (ThreadDivCloseandOpen.style.display === 'none') {
+        ThreadDivCloseandOpen.style.display = 'block';
+        threadArrow.src = './assets/arrow-down.svg';
+    } else {
+        ThreadDivCloseandOpen.style.display = 'none';
+        threadArrow.src = './assets/arrow-up.svg';
+    }
 });

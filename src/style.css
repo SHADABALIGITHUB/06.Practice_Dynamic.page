@@ -217,12 +217,33 @@ nav .menu-icon.active .line:nth-child(1) {
 nav .menu-icon.active .line:nth-child(2) {
     opacity: 0;
 }
+.mobile-view{
+    display: none;
+}
 
 /* nav Section end here */
 
 /* nav section media query  */
 
 @media screen and (max-width: 768px) {
+    .mobile-view{
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+            
+
+    }
+    .mobile-view h1{
+        color: var(--primary-color);
+
+    }
+    #Main_Section{
+        display: none;
+    }
+
     nav .nav-wrapper{
         padding: 0 4px;
     }
