@@ -7,15 +7,9 @@ import {PoolConnection } from 'mysql2';
 
 const getAllProducts = (req:Request,res:Response)=>{
 
-    connection.getConnection((err: Error|null, conn: PoolConnection) => {
-        if (err) {
-            res.status(500).send({
-                message: 'INTERNAL SERVER ERROR',
-                result: null
-            });
-            return;
-        }
-        conn.query("select * from proucts", (err:Error|null, resultSet: Product[]) => {
+    connection.getConnection((err:any, conn: PoolConnection) => {
+       
+        conn.query("Select * from TodoItems", (err:Error|null, resultSet: Product[]) => {
             conn.release();
             if (err) {
                 res.status(500).send({
