@@ -2,11 +2,20 @@ import express,{Express ,Request,Response} from 'express';
 import dotenv from 'dotenv';
 import * as BodyParser from 'body-parser';
 import routes from './routes/routes';
+import cors from 'cors';
 
 dotenv.config();
 
 
+
+
 const app:Express = express();
+
+app.use(cors({
+    origin:'*',
+    methods:['GET','POST','PUT','DELETE'],
+   
+}));
 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended:true}));
