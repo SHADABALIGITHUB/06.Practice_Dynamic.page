@@ -1,31 +1,39 @@
-// import { getDatabase,ref,set } from "firebase/database";
 
-// import {app} from './firebase'
-import Auth from "./components/Auth";
 import './App.css';
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
+import Landing from "./components/Landing";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-// const db = getDatabase(app);
+
 
 
 function App() {
 
-  // const writeUserData = () => {
-
-  //   set(ref(db, 'users/'), {
-  //     username: 'name',
-  //     email: 'email',
-  //     age : 24,
-  //   });
-
-  // }
+ 
 
   
   return (
     <>
-      <h1>App</h1>
-      {/* <button onClick={writeUserData}>Add Data</button> */}
+       <BrowserRouter>
 
-      <Auth/>
+       <Routes>
+
+        <Route path="/" element={<Landing/>}/>
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+
+
+
+       </Routes>
+       
+       
+       
+       </BrowserRouter>
+
+      
        
     </>
   )
