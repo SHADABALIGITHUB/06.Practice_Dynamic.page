@@ -74,10 +74,10 @@ const handleRegister = async() => {
             <input style={{height:"30px",margin:"10px"}} type="password" placeholder="Password" autoComplete='current-password'   value={password} onChange={(e)=>setPassword(e.target.value)} />
             <br/>
            
-           <button onClick={handleRegister}> Register </button>
+           {/* <button onClick={handleRegister}> Register </button> */}
                
 
-             {/* <Button type='submit' onClick={()=>{handleRegister()}} >Register</Button> */}
+             <Button type='submit' onClick={handleRegister} >Register</Button>
              </form>
 
 
