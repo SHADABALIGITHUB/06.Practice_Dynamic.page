@@ -4,8 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import {app} from '../firebase'
+import { useContext } from 'react';
+import {UserContext} from '../context/User'
 
 const Login:React.FC = () => {
+    const {setUser}=useContext(UserContext);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const navigate=useNavigate();
@@ -13,7 +16,12 @@ const Login:React.FC = () => {
     const handleLogin = async(e:any) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth,email,password)
-        .then(() => {
+        .then((result) => {
+
+          
+            setUser({
+                email:result.user.providerData[0].email,
+            });
             // Signed in 
 
             navigate("/dashboard");
