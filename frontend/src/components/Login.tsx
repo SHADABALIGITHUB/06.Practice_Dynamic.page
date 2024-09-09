@@ -31,7 +31,7 @@ const Login:React.FC = () => {
   return (
     <>
    
-    <div className="form">
+    <div className="section">
       <p className="form-title">Sign in to your account</p>
       <div className="input-container">
         <input type="email" autoComplete='email' placeholder="Enter email" value={email}  onChange={(e)=>setEmail(e.target.value)} />
@@ -40,7 +40,7 @@ const Login:React.FC = () => {
       <div className="input-container">
         <input type="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value)} />
       </div>
-      <button type="submit" className="submit" onClick={(e)=>{handleLogin(e)}}>
+      <button type="submit" className="submit" style={{maxWidth:"100px"}} onClick={(e)=>{handleLogin(e)}}>
         Sign in
       </button>
       <p className="signup-link">

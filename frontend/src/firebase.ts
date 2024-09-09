@@ -2,13 +2,13 @@ import  {initializeApp} from 'firebase/app';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAZHCDJuq264KJVRUXL3Xz55cVB8aUdW5o",
-  authDomain: "shad-cn.firebaseapp.com",
-  databaseURL: "https://shad-cn-default-rtdb.firebaseio.com",
-  projectId: "shad-cn",
-  storageBucket: "shad-cn.appspot.com",
-  messagingSenderId: "56861098157",
-  appId: "1:56861098157:web:d8211d3f56fa0511c2c624",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_DATABASE_URL,
+  projectId: import.meta.env.VITE_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGE,
+  appId: import.meta.env.VITE_APP_ID,
  };
 
 export const app = initializeApp(firebaseConfig);

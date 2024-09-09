@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Landing:React.FC= () => {
   return (
-    <div>
+    <div className='section'>
 
         <h2 style={{color:"white"}}> Welcome to Landing Page </h2>
         

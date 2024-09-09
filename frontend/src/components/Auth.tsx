@@ -1,19 +1,21 @@
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import { getAuth ,createUserWithEmailAndPassword} from 'firebase/auth';
 
 import {app} from '../firebase'
 
 
-// const Button = styled.button`
-// background-color: skyblue;
-// color: white;
-// padding: 10px 20px;
-// border-radius: 5px;
-// border: none;
-// cursor: pointer;
-// `;
+const Button = styled.button`
+background-color: skyblue;
+color: white;
+padding: 10px 20px;
+border-radius: 5px;
+border: none;
+cursor: pointer;
+`;
+
+
 
 
 

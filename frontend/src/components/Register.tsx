@@ -32,11 +32,12 @@ const Register:React.FC = () => {
                 const errorMessage = error.message;
                 console.log(errorMessage)
                 console.log(errorCode);
+                alert("Already have account use other email")
             });
         }
   return (
    
-    <div className="container">
+    <div className="section">
       <div className="heading">SignIn to your account</div>
       <div className="form">
         <div className="input-field">
