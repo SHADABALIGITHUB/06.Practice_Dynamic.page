@@ -61,6 +61,9 @@ const SignIn = () => {
     <button className="form-submit-btn" type="submit" onClick={(e)=>handleLogin(e)}>
       Create Account
     </button>
+    <button className="form-google-btn" type="submit" onClick={(e)=>handleLogin(e)}>
+     Google Sign In
+    </button>
   </form>
 
   <Link className="signup-link" to="/signup">

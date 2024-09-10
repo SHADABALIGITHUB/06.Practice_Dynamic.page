@@ -10,8 +10,8 @@ export type UserType={
     uid?:string|null;
 }
 export type UserContextType = {
-    user: UserType;
-    setUser: Dispatch<SetStateAction<UserType>>;
+    user: UserType|null;
+    setUser: Dispatch<SetStateAction<UserType|null>>;
   };
 
 export const UserContext=createContext<UserContextType>({

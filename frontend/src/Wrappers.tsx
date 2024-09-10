@@ -8,8 +8,12 @@ const Wrappers:React.FC = () => {
    
   const [user,setUser]=React.useState<UserType>({
     email:"",
-     
-  })
+    displayName:"",
+    phoneNumber:"",
+    photoURL:"",
+    providerId:"",
+    uid:""
+})
    
     
   return (

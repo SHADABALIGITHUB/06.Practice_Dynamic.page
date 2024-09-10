@@ -11,9 +11,16 @@ export interface Department {
   courses: string[];
 }
 
+type SignOutProps = {
+  SignOutUser: () => void;
+};
 
-const Dashboard:React.FC = () => {
+
+
+const Dashboard:React.FC<SignOutProps> = ({SignOutUser}) => {
     const {user}=useContext(UserContext);
+
+    
     const departments: Department[] = [
       {
         id: 1,
@@ -41,7 +48,8 @@ const Dashboard:React.FC = () => {
   return (
     <div className="dashboard-container">
     <h1>JSS  Departments</h1>
-    <h3>Your Email id:{user.email}</h3>
+    <h3>Your Email id:{user?.email}</h3>
+    <button onClick={SignOutUser}>Logout</button>
     <div className="department-list">
       {departments.map(department => (
         <div key={department.id} className="department-card">
