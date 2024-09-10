@@ -2,6 +2,7 @@ import React from 'react'
 import App from './App'
 import {UserContext} from './context/User'
 import {UserType} from './context/User'
+import { FirebaseProvider } from './context/Firebase'
 
 const Wrappers:React.FC = () => {
    
@@ -13,12 +14,14 @@ const Wrappers:React.FC = () => {
     
   return (
      <>
-   
+    <FirebaseProvider>
      <UserContext.Provider value={{user,setUser}}>
+    
 
         <App/>
 
     </UserContext.Provider>
+    </FirebaseProvider>
     </>
       
    

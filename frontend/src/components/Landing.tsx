@@ -7,9 +7,10 @@ const Landing:React.FC= () => {
 
         <h2 style={{color:"white"}}> Welcome to Landing Page </h2>
         
-        <Link to="/register">Register</Link>
+        <Link to="/signin">Signin</Link>
         <br/>
-        <Link to="/login">Login</Link>
+        <br />
+        <Link to="/signup"> Signup</Link>
       
     </div>
   )
