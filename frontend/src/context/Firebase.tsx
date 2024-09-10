@@ -2,6 +2,7 @@ import {initializeApp} from 'firebase/app';
 import { createContext,ReactNode, useContext } from 'react';
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth';
 import { getDatabase,set,ref } from 'firebase/database';
+import { UserCredential } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_API_KEY,
@@ -16,8 +17,9 @@ const firebaseConfig = {
    type AuthContextType = {
     FirebaseRegister: (email: string, password: string) => Promise<Boolean>;
     FirebaseDatabaseSet: (key: string, data: string) => Promise<void>;
-    FirebaseLogin: (email: string, password: string) => Promise<Boolean>;
+    FirebaseLogin: (email: string, password: string) => Promise<UserCredential>;
   };
+
 
 
 
@@ -41,11 +43,12 @@ export const useFirebase = () => {
 
 
 export const FirebaseProvider = ({children}:{children:ReactNode}) => {
+   
 
      const FirebaseRegister=async(email:string,password:string)=>{
         try {
             await createUserWithEmailAndPassword(FirebaseAuth, email, password);
-            // console.log("Registration successful:", userCredential);
+            
             return true;
 
           } catch (error) {
@@ -65,14 +68,15 @@ export const FirebaseProvider = ({children}:{children:ReactNode}) => {
             
 
         }
-        const FirebaseLogin=async(email:string,password:string)=>{
+        const FirebaseLogin=async(email:string,password:string):Promise<UserCredential>=>{
             try{
-            await signInWithEmailAndPassword(FirebaseAuth,email,password);
-            return true;
+            const UserCredential=await signInWithEmailAndPassword(FirebaseAuth,email,password);
+             return UserCredential;
             }
             catch(error){
+                 
                
-                return false;
+                throw error;
             }
         }
 

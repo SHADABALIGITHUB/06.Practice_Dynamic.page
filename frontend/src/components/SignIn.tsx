@@ -1,22 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "../styles/Signup.css"
 import { Link } from 'react-router-dom'
 import { useFirebase } from '../context/Firebase'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../context/User'
 const SignIn = () => {
     const [email,setEmail]=React.useState("");
     const [password,setPassword]=React.useState("");
+    const {setUser} =useContext(UserContext);
 
     const Firebase=useFirebase();
+    const naviagate=useNavigate();
 
 
     const handleLogin = async(e:React.FormEvent) => {
         e.preventDefault();
-       if(await Firebase.FirebaseLogin(email,password)){
-              console.log("Login Success")
+       try{
+        const res= await Firebase.FirebaseLogin(email,password);
+            
+              setUser(res.user.providerData[0]);
+              // console.log("Login Success")
+              naviagate("/dashboard")
 
        }
-       else{
+       
+       catch(err){
               console.log("Login Failed")
        }
     }
@@ -57,10 +65,10 @@ const SignIn = () => {
 
   <Link className="signup-link" to="/signup">
     Don't have an account?
-    <a href="#" className="signup-link link">
+    <span  className="signup-link link">
       {" "}
       Login
-    </a>
+    </span>
   </Link>
 </div>
 

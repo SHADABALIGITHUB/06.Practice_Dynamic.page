@@ -2,9 +2,12 @@
 import { createContext,Dispatch,SetStateAction } from "react";
 
 export type UserType={
+    displayName?:string|null;
     email:string|null;
-    password?:string;
-    username?:string;
+    phoneNumber?:string|null;
+    photoURL?:string|null;
+    providerId?:string|null;
+    uid?:string|null;
 }
 export type UserContextType = {
     user: UserType;
@@ -13,10 +16,14 @@ export type UserContextType = {
 
 export const UserContext=createContext<UserContextType>({
     user:{
+        displayName:"",
         email:"",
-        password:"",
-        username:""
-    },
+        phoneNumber:"",
+        photoURL:"",
+        providerId:"",
+        uid:"",
+
+  },
     setUser:()=>{}
 }
 );

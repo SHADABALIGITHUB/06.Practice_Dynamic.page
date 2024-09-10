@@ -8,7 +8,7 @@ const Wrappers:React.FC = () => {
    
   const [user,setUser]=React.useState<UserType>({
     email:"",
-    password:"",    
+     
   })
    
     
