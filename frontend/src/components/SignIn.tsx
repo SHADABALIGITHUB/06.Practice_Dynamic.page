@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useFirebase } from '../context/Firebase'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/User'
+
 const SignIn = () => {
     const [email,setEmail]=React.useState("");
     const [password,setPassword]=React.useState("");
@@ -12,14 +13,31 @@ const SignIn = () => {
     const Firebase=useFirebase();
     const naviagate=useNavigate();
 
+   
+    const handleGoogleLogin = async(e:React.FormEvent) => {
+        e.preventDefault();
+        try{
+            const res=await Firebase.GoogleSignin();
+            setUser(res.providerData[0]);
+            console.log(res);
+            naviagate("/dashboard");
+        }
+        catch(err){
+            console.log("Google Signin Failed")
+        }
+    }
+
+
 
     const handleLogin = async(e:React.FormEvent) => {
         e.preventDefault();
        try{
         const res= await Firebase.FirebaseLogin(email,password);
+               
+             
             
               setUser(res.user.providerData[0]);
-              // console.log("Login Success")
+             
               naviagate("/dashboard")
 
        }
@@ -61,7 +79,7 @@ const SignIn = () => {
     <button className="form-submit-btn" type="submit" onClick={(e)=>handleLogin(e)}>
       Create Account
     </button>
-    <button className="form-google-btn" type="submit" onClick={(e)=>handleLogin(e)}>
+    <button className="form-google-btn" type="submit" onClick={(e)=>{handleGoogleLogin(e)}}>
      Google Sign In
     </button>
   </form>

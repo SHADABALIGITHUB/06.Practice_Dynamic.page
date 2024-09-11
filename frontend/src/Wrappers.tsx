@@ -6,7 +6,7 @@ import { FirebaseProvider } from './context/Firebase'
 
 const Wrappers:React.FC = () => {
    
-  const [user,setUser]=React.useState<UserType>({
+  const [user,setUser]=React.useState<UserType|null>({
     email:"",
     displayName:"",
     phoneNumber:"",

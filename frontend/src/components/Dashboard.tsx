@@ -44,11 +44,18 @@ const Dashboard:React.FC<SignOutProps> = ({SignOutUser}) => {
         courses: ['Power Systems', 'Control Systems', 'Digital Electronics']
       }
     ];
+
+    const [loading, setLoading] = React.useState(true);
+    React.useEffect(() => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    }, []);
    
   return (
     <div className="dashboard-container">
     <h1>JSS  Departments</h1>
-    <h3>Your Email id:{user?.email}</h3>
+    <h3>Your Email id:{loading?<span className="loading"> loading ..</span>:user?.email}</h3>
     <button onClick={SignOutUser}>Logout</button>
     <div className="department-list">
       {departments.map(department => (

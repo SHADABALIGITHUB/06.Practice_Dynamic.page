@@ -11,6 +11,7 @@ import { useContext, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 
 import { app } from './firebase';
+import UserPersonalDetails from './components/PersonalDetails/UserPersonalDetails';
 
 
 
@@ -40,10 +41,10 @@ function App() {
               setUser(user);
           }else{
               setUser(null);
-              // console.log("User is signed out");
+              
           }
       })
-    },[])  
+    },[Auth,setUser])  
    
 
  
@@ -59,6 +60,7 @@ function App() {
         <Route path="/dashboard" element={user?<Dashboard SignOutUser={signOutUser}/>:<Navigate to="/signin"/>}/>
         <Route path='/signup' element={!user?<SignUp/>:<Navigate to="/dashboard"/>}/>
         <Route path='/signin' element={!user?<SignIn/>:<Navigate to="/dashboard"/>}/>
+        <Route path='/user' element={<UserPersonalDetails/>}/>
         <Route path='*' element={<h2> 404 Page Not Found</h2>}/>
         
 

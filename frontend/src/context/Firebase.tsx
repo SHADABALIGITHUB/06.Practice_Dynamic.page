@@ -1,8 +1,11 @@
 import {initializeApp} from 'firebase/app';
 import { createContext,ReactNode, useContext } from 'react';
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword ,GoogleAuthProvider,signInWithPopup} from 'firebase/auth';
 import { getDatabase,set,ref } from 'firebase/database';
-import { UserCredential } from 'firebase/auth';
+import { UserCredential,User } from 'firebase/auth';
+
+
+
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_API_KEY,
@@ -18,14 +21,16 @@ const firebaseConfig = {
     FirebaseRegister: (email: string, password: string) => Promise<Boolean>;
     FirebaseDatabaseSet: (key: string, data: string) => Promise<void>;
     FirebaseLogin: (email: string, password: string) => Promise<UserCredential>;
+    GoogleSignin: () => Promise<User>;
   };
 
 
 
 
 const FirebaseApp = initializeApp(firebaseConfig);
-const FirebaseAuth = getAuth(FirebaseApp);
+export const FirebaseAuth = getAuth(FirebaseApp);
 const FirebaseDatabase = getDatabase(FirebaseApp);
+
 
 
 
@@ -63,7 +68,7 @@ export const FirebaseProvider = ({children}:{children:ReactNode}) => {
               }
                 catch (error) {
                     console.error("Database error:", error);
-                    throw error; // Rethrow the error so that components using this can handle it
+                    throw error; 
                     }
             
 
@@ -80,10 +85,27 @@ export const FirebaseProvider = ({children}:{children:ReactNode}) => {
             }
         }
 
+        const GoogleSignin=async()=>{
+          
+            
+            try{
+                const provider = new GoogleAuthProvider();
+                const result = await signInWithPopup(FirebaseAuth, provider);
+                const user = result.user;
+                console.log(user);
+              
+                // naviagate("/dashboard");
+                return user;
+            }
+            catch(error){
+                throw error;
+            }
+        }
+
         
      return (
 
-        <FirebaseContext.Provider value={{FirebaseRegister,FirebaseDatabaseSet,FirebaseLogin}}>
+        <FirebaseContext.Provider value={{FirebaseRegister,FirebaseDatabaseSet,FirebaseLogin,GoogleSignin}}>
             {children}
 
         </FirebaseContext.Provider>
