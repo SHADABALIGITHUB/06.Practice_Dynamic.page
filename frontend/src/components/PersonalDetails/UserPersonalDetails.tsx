@@ -1,32 +1,64 @@
 import React from 'react'
+import {app} from '../../firebase'
+import { getFirestore } from 'firebase/firestore'
+// import { doc, setDoc } from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
+
 
 const UserPersonalDetails:React.FC = () => {
+    const db=getFirestore(app);
+
+    const addData=async()=>{
+        
+        try{
+            const ref=await addDoc(collection(db,"userPersonal"),{
+                firstname:"",
+                lastname:"",
+                email:"",
+                dob:"",
+                gender:"",
+                phone:"",
+                address:""
+            })
+
+        }
+        catch(e){
+
+        }
+    
+    
+    }
+
+
+
+
+
   return (
-    <div>
+    <div style={{marginLeft:'20px'}}>
         <h1>User Personal Details</h1>
         <form >
         <label>
           First Name:
-          <input type="text" name="name" />
+         <span style={{color:'red'}}> *</span> <input type="text" name="name" />
         </label>
         <br />
         <label>
           Last Name:
-          <input type="text" name="name" />
+         <span style={{color:'red'}}> *</span> <input type="text" name="name" />
         </label>
         <br />
         <label>
           Email:
-          <input type="text" name="name" />
+         <span style={{color:'red'}}> *</span> <input type="text" name="name" />
         </label>
         <br />
         <label>
           Date of Birth:
-          <input type="text" name="name" />
+         <span style={{color:'red'}}> *</span> <input type="text" name="name" />
         </label>
         <br />
           <label htmlFor="Gender"> Gender : </label>
-          <input type="radio" id="male" name="gender" />
+         <span style={{color:'red'}}> *</span> <input type="radio" id="male" name="gender" />
           <label htmlFor="male"> Male </label>
           <input type="radio" id="female" name="gender" />
           <label htmlFor="male"> Female </label>
@@ -38,15 +70,17 @@ const UserPersonalDetails:React.FC = () => {
 
         <label>
           Phone Number:
-          <input type="text" name="name" />
+         <span style={{color:'red'}}> *</span> <input type="text" name="name" />
         </label>
         <br />
         <label>
           Address:
-          <input type="text" name="name" />
+         <span style={{color:'red'}}> *</span> <input type="text" name="name" />
 
         </label>
         <br />
+        </form>
+        <form >
         <h1> Educational Details </h1>
 
         <label>
@@ -56,20 +90,22 @@ const UserPersonalDetails:React.FC = () => {
         <br />
         <label>
           College:
-          <input type="text" name="name" />
+         <span style={{color:'red'}}> *</span> <input type="text" name="name" />
         </label>
         <br />
         <label>
           Degree:
-          <input type="text" name="name" />
+         <span style={{color:'red'}}> *</span> <input type="text" name="name" />
         </label>
         <br />
         <label>
           Specialization:
-          <input type="text" name="name" />
+         <span style={{color:'red'}}> *</span> <input type="text" name="name" />
         </label>
 
         <br />
+        </form>
+        <form >
         <h1>Social Link </h1>
         <label>
           LinkedIn:
@@ -107,7 +143,7 @@ const UserPersonalDetails:React.FC = () => {
           <input type="text" name="name" />
         </label>
         <br />
-        
+
 
         <button type="submit">Submit</button>
 
