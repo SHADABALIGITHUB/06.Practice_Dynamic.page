@@ -9,7 +9,7 @@ import { onAuthStateChanged,signOut} from 'firebase/auth';
 import { UserContext } from './context/User';
 import { useContext, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { app } from './firebase';
 import UserPersonalDetails from './components/PersonalDetails/UserPersonalDetails';
 

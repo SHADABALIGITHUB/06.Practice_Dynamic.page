@@ -70,10 +70,10 @@ const SignUp:React.FC = () => {
   </form>
   <Link className="signup-link" to="/signin">
     Don't have an account?
-    <a href="#" className="signup-link link">
+    <span className="signup-link link">
       {" "}
       Login
-    </a>
+    </span>
   </Link>
 </div>
 

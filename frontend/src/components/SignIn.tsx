@@ -77,7 +77,7 @@ const SignIn = () => {
       />
     </div>
     <button className="form-submit-btn" type="submit" onClick={(e)=>handleLogin(e)}>
-      Create Account
+      Login in
     </button>
     <button className="form-google-btn" type="submit" onClick={(e)=>{handleGoogleLogin(e)}}>
      Google Sign In
